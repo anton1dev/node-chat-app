@@ -32,7 +32,7 @@ server.on("connection", (socket) => {
 
   socket.on("error", () => {
     clients.map((client) => {
-      client.socket.write(`User ${clientId} left!`);
+      client.socket.write(`User ${clientId} left! a chat`);
     });
   });
 
