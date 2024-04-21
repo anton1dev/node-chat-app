@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "start": "node server.js",
+    "start": "node src/server.js",
     "lint": "eslint --config .eslintrc.js . --fix",
     "format": "prettier --write \"./*.js\""
   },
