@@ -1,8 +1,8 @@
 const net = require("net");
 
 
-const PORT = 4020;
-const HOST = "127.0.0.1";
+const PORT = process.env.PORT || 4020;
+const HOST = "0.0.0.0";
 
 const server = net.createServer();
 const clients = [];
