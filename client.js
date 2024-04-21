@@ -1,5 +1,5 @@
-const net = require('net');
-const readLine = require('readline/promises');
+const net = require("net");
+const readLine = require("readline/promises");
 
 let id;
 
@@ -24,16 +24,13 @@ const moveCursor = (dx, dy) => {
   });
 };
 
-
 const socket = net.createConnection(
-  { host: '127.0.0.1', port: 3008 },
+  { host: "127.0.0.1", port: 3008 },
   async () => {
-    console.log('connected to server!');
+    console.log("connected to server!");
 
     const ask = async () => {
-
-
-      const message = await rl.question('Enter your message here > ');
+      const message = await rl.question("Enter your message here > ");
 
       await moveCursor(0, -1);
 
@@ -44,28 +41,25 @@ const socket = net.createConnection(
 
     ask();
 
-
-    socket.on('data', async (data) => {
+    socket.on("data", async (data) => {
       console.log();
       await moveCursor(0, -1);
       await clearLine(0);
 
-      if (data.toString('utf-8').substring(0, 2) === 'id') {
-        id = data.toString('utf-8').substring(3);
+      if (data.toString("utf-8").substring(0, 2) === "id") {
+        id = data.toString("utf-8").substring(3);
 
-        console.log((`Your ID is ${id}! \n`));
+        console.log(`Your ID is ${id}! \n`);
       } else {
-
       }
 
-      console.log(data.toString('utf-8'));
+      console.log(data.toString("utf-8"));
 
       ask();
     });
-
-  }
+  },
 );
 
-socket.on('end', () => {
-  console.log('connection was ended!');
-})
+socket.on("end", () => {
+  console.log("connection was ended!");
+});
