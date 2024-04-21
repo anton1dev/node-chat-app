@@ -1,13 +1,17 @@
 const net = require("net");
 
-const server = net.createServer();
 
+const PORT = 4020;
+const HOST = "127.0.0.1";
+
+const server = net.createServer();
 const clients = [];
 
 server.on("connection", (socket) => {
   console.log("new connection to server!");
 
   const clientId = clients.length + 1;
+
   clients.map((client) => {
     client.socket.write(`User ${clientId} joined a chat!`);
   });
@@ -32,13 +36,13 @@ server.on("connection", (socket) => {
 
   socket.on("error", () => {
     clients.map((client) => {
-      client.socket.write(`User ${clientId} left! a chat`);
+      client.socket.write(`User ${clientId} left a chat!`);
     });
   });
 
   clients.push({ id: clientId.toString(), socket });
 });
 
-server.listen(3008, "127.0.0.1", () => {
+server.listen(PORT, HOST, () => {
   console.log("server is live", server.address());
 });
