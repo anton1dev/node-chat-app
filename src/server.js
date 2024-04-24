@@ -1,10 +1,8 @@
-const net = require("net");
+import { createServer } from "net";
 
+import { HOST, PORT } from '../config';
 
-const PORT = process.env.PORT || 4020;
-const HOST = "0.0.0.0";
-
-const server = net.createServer();
+const server = createServer();
 const clients = [];
 
 server.on("connection", (socket) => {

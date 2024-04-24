@@ -1,8 +1,7 @@
-const net = require("net");
-const readLine = require("readline/promises");
+import net from 'net';
+import readLine from 'readline/promises';
 
-const PORT = 4020;
-const HOST = "127.0.0.1";
+import { HOST, PORT } from '../config';
 
 let id;
 
